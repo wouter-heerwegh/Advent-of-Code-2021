@@ -50,6 +50,8 @@ def calculate_sum(board):
 
 	return sum
 
+copy = boards.copy()
+
 sum = 0
 final_nr = 0
 for number in numbers:
@@ -63,6 +65,32 @@ for number in numbers:
 			sum = calculate_sum(boards[i])
 			final_nr = int(number)
 			break
+	if bingo:
+		break
+
+print(sum * final_nr)
+
+
+# Part 2
+
+boards = copy
+lookup = set()
+
+sum = 0
+final_nr = 0
+for number in numbers:
+	bingo = False
+	for i in range(len(boards)):
+		replace_number(number, boards[i])
+		if check_board(boards[i].copy()):
+			lookup.add(i)
+
+			if len(lookup) == len(boards):
+				bingo = True
+			
+				sum = calculate_sum(boards[i])
+				final_nr = int(number)
+				break
 	if bingo:
 		break
 
