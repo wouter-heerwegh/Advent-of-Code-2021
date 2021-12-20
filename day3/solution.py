@@ -1,5 +1,3 @@
-from parse import parse
-
 with open("input.txt") as file:
 	lines = file.read().splitlines()
 
